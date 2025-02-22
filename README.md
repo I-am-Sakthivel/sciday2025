@@ -3,7 +3,7 @@ Will this be an adequate display of project?
 
 
 before running use
-`pip install streamlit numpy plotly scipy`
+`pip install streamlit numpy plotly scipy sympy`
 then 
 `streamlit run app.py `
 
