@@ -6,3 +6,9 @@ before running use
 `pip install streamlit numpy plotly scipy`
 then 
 `streamlit run app.py `
+
+
+or
+
+
+access it <a>https://physim.streamlit.app/</a>
