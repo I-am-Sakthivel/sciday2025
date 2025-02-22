@@ -4,9 +4,10 @@ from phy import compute_projectile_motion, get_trajectory_points, compute_free_f
 from plot import plot_trajectory_interactive, plot_shm_interactive,plot_orbit
 st.title("Interactive Physics Simulator")
 topic = st.selectbox("Choose a physics concept:", 
-                     ["Projectile Motion", "Free Fall", "Simple Harmonic Motion","Celestial Gravitation"])
+                     ["Projectile Motion", "Free Fall", "Simple Harmonic Motion","Celestial Gravitation","Energy Transition","Planck's Constant","E=mc²","Stress and Strain"])
 
-
+h=6.62607015e-34
+c=3e8
 match topic:
     case "Projectile Motion":
         v0_val = st.slider("Initial Velocity (m/s)", 1, 100, 20)
@@ -42,3 +43,34 @@ match topic:
         st.markdown(f"Orbital Period:~{T_years} Earth years")
         fig = plot_orbit(x_vals, y_vals,a*(1.5e11))
         st.plotly_chart(fig)
+    case "Energy Transition":
+        n_initial = st.slider("Initial Energy Level (n)", 1, 5, 2)
+        n_final = st.slider("Final Energy Level (n)", 1, 5, 1)
+        if n_final >= n_initial:
+            st.warning("Final energy level must be lower than initial energy level.")
+        else:
+            R_H = 1.097e7  # Rydberg constant (m⁻¹)
+            wavelength = 1 / (R_H * (1/n_final**2 - 1/n_initial**2))  # in meters
+            st.write(f"**Emitted Photon Wavelength:** {wavelength * 1e9:.2f} nm")
+
+    case "Planck's Constant":
+        frequency = st.slider("Frequency of Light (Hz)", 1e12, 1e16, 5e14)
+        energy = h * frequency  # E = hν
+        st.write(f"**Photon Energy:** {energy:.2e} Joules")
+
+    case "E=mc²":
+        mass = st.slider("Mass (kg)", 1e-6, 10.0, 1.0)
+        energy = mass * c**2  # E = mc²
+        st.write(f"**Equivalent Energy:** {energy:.2e} Joules")
+
+    case "Stress and Strain":
+        force = st.slider("Applied Force (N)", 1, 1000, 100)
+        area = st.slider("Cross-Sectional Area (m²)", 0.0001, 1.0, 0.01)
+        original_length = st.slider("Original Length (m)", 0.1, 10.0, 1.0)
+        extension = st.slider("Extension (m)", 0.0001, 1.0, 0.01)
+
+        stress = force / area
+        strain = extension / original_length
+
+        st.write(f"**Stress:** {stress:.2f} Pa")
+        st.write(f"**Strain:** {strain:.6f}")
