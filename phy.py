@@ -35,3 +35,28 @@ def compute_orbit(a, e, num_points=360):
     x = r * np.cos(theta)
     y = r * np.sin(theta)
     return x, y
+def energy_comparisons(E):
+    if E < 1e-19:
+        return f"""
+        🔴 **Radio Waves & Microwaves**
+        - **With {E:.2e} J, you could barely power a single LED for a nanosecond.**  
+        - It would take **~10¹⁹ of these photons** to power a TV for just one second!
+        """
+    elif 1e-19 <= E < 3e-19:
+        return f"""
+        🟠 **Infrared & Visible Light**
+        - A typical **laser pointer** emits around **1 mW** (10⁻³ W) of power.
+        - You'd need **{(1e-3/E):.2e} of these photons per second** to run a laser pointer.
+        """
+    elif 3e-19 <= E < 1e-16:
+        return f"""
+        🔵 **Ultraviolet & X-rays**
+        - A **single X-ray photon** has enough energy to damage DNA.
+        - **{(1e-16/E):.2e} of these photons** equal the energy in an AA battery!
+        """
+    else:
+        return f"""
+        🟣 **Gamma Rays & Extreme Energies**
+        - A **Gamma Ray Burst** can release **more energy than the Sun will emit in its lifetime**.
+        - **{(1e6/E):.2e} photons at this energy** could power an entire city for an hour!
+        """
