@@ -55,7 +55,7 @@ match topic:
             st.write(f"**Emitted Photon Wavelength:** {wavelength * 1e9:.2f} nm")
 
     case "Planck's Constant":
-        frequency = st.slider("Frequency of Light (10^xHz)", 12.0,16.0,12.0)
+        frequency = st.slider("Frequency of Light (10^xHz)", 12.0,21.0,11.0)
         energy = h * (10**frequency)  # E = hν
         st.write(f"**Photon Energy:** {energy:.2e} Joules")
         st.markdown(energy_comparisons(energy))
