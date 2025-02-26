@@ -1,7 +1,4 @@
-```
----
-# 
-This project demonstrates fundamental and advanced physics concepts through visualizations, making learning more engaging and intuitive.
+# This project demonstrates fundamental and advanced physics concepts through visualizations, making learning more engaging and intuitive.
 ## 🚀 
 SciDay 2025 provides an interactive environment for exploring physics concepts using . Built with , this platform offers seamless simulations accessible both locally and online.
 ## 🔧 
@@ -33,4 +30,3 @@ We welcome contributions! To contribute:
 1.  the repository. 2. Create a  (`feature-branch`). 3.  your changes.
 ## 📝 
 This project is licensed under the MIT License. 
-```
