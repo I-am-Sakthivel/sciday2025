@@ -1,4 +1,4 @@
-```markdown
+```
 ---
 # 
 This project demonstrates fundamental and advanced physics concepts through visualizations, making learning more engaging and intuitive.
