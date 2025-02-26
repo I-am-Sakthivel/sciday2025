@@ -6,6 +6,7 @@ from plot import plot_trajectory_interactive, plot_shm_interactive,plot_orbit
 st.title("Interactive Physics Simulator")
 topic = st.selectbox("Choose a physics concept:", 
                      ["Projectile Motion", "Free Fall", "Simple Harmonic Motion","Celestial Gravitation","Energy Transition","Planck's Constant","E=mc²","Stress and Strain","Entropy","Centripetal & Centrifugal Force","Lens Formula"])
+ZIP_FILE_PATH = "app_final_zip.zip"
 
 h=6.62607015e-34
 c=3e8
@@ -41,6 +42,14 @@ match topic:
         T = 2 * np.pi * np.sqrt((a* (1.5e11))**3 / (G * M_sun))  # In seconds
         T_years = np.round(T / (60 * 60 * 24 * 365.25),4) 
         x_vals, y_vals = compute_orbit(a, e)
+        with open(ZIP_FILE_PATH, "rb") as file:
+            zip_bytes = file.read()
+        st.download_button(
+    label="Download the full solar system",
+    data=zip_bytes,
+    file_name="app.zip",
+    mime="application/zip"
+)
         st.markdown(f"Orbital Period:~{T_years} Earth years")
         fig = plot_orbit(x_vals, y_vals,a*(1.5e11))
         st.plotly_chart(fig)
@@ -55,7 +64,7 @@ match topic:
             st.write(f"**Emitted Photon Wavelength:** {wavelength * 1e9:.2f} nm")
 
     case "Planck's Constant":
-        frequency = st.slider("Frequency of Light (10^xHz)", 12.0,21.0,11.0)
+        frequency = st.slider("Frequency of Light (10^xHz)", 12.0,16.0,12.0)
         energy = h * (10**frequency)  # E = hν
         st.write(f"**Photon Energy:** {energy:.2e} Joules")
         st.markdown(energy_comparisons(energy))
@@ -76,11 +85,6 @@ match topic:
 
         st.write(f"**Stress:** {stress:.2f} Pa")
         st.write(f"**Strain:** {strain:.6f}")
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(x=[0, strain], y=[0, stress], mode="lines+markers", name="Stress-Strain Curve"))
-        fig.update_layout(title="Stress-Strain Curve", xaxis_title="Strain", yaxis_title="Stress (Pa)", template="plotly_dark")
-        st.plotly_chart(fig)
-
     case "Entropy":
         Q = st.slider("Heat Energy (J)", 1.0, 1000.0, 100.0)
         T_initial = st.slider("Initial Temperature (K)", 1.0, 1000.0, 300.0)
