@@ -43,8 +43,6 @@ match topic:
         T = 2 * np.pi * np.sqrt((a* (1.5e11))**3 / (G * M_sun))  # In seconds
         T_years = np.round(T / (60 * 60 * 24 * 365.25),4) 
         x_vals, y_vals = compute_orbit(a, e)
-        with open(ZIP_FILE_PATH, "rb") as file:
-            zip_bytes = file.read()
         st.download_button(
     label="Download the full solar system",
     data=response.content,
