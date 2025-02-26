@@ -1,13 +1,14 @@
 import streamlit as st
 import numpy as np
+import requests
 import plotly.graph_objects as go
 from phy import compute_projectile_motion, get_trajectory_points, compute_free_fall, compute_shm,compute_orbit, AU,G, M_sun,energy_comparisons
 from plot import plot_trajectory_interactive, plot_shm_interactive,plot_orbit
 st.title("Interactive Physics Simulator")
 topic = st.selectbox("Choose a physics concept:", 
                      ["Projectile Motion", "Free Fall", "Simple Harmonic Motion","Celestial Gravitation","Energy Transition","Planck's Constant","E=mc²","Stress and Strain","Entropy","Centripetal & Centrifugal Force","Lens Formula"])
-ZIP_FILE_PATH = "app_final_zip.zip"
-
+ZIP_FILE_PATH = "https://github.com/I-am-Sakthivel/sciday2025/blob/main/app_final_zip.zip"
+response = requests.get(ZIP_FILE_PATH)
 h=6.62607015e-34
 c=3e8
 match topic:
@@ -46,7 +47,7 @@ match topic:
             zip_bytes = file.read()
         st.download_button(
     label="Download the full solar system",
-    data=zip_bytes,
+    data=response.content,
     file_name="app.zip",
     mime="application/zip"
 )
