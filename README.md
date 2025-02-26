@@ -21,7 +21,7 @@ streamlit run app.py
 ```
 ### 
 No installation? No problem! Access the project online at:
-[](https://physim.streamlit.app/)
+[Physix](https://physim.streamlit.app/)
 ## 📌 
 ✔  – Explore physics concepts through real-time visualizations.  
 ✔  – Solve equations symbolically and numerically.  
