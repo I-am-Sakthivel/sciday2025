@@ -84,6 +84,10 @@ match topic:
 
         st.write(f"**Stress:** {stress:.2f} Pa")
         st.write(f"**Strain:** {strain:.6f}")
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=[0, strain], y=[0, stress], mode="lines+markers", name="Stress-Strain Curve"))
+        fig.update_layout(title="Stress-Strain Curve", xaxis_title="Strain", yaxis_title="Stress (Pa)", template="plotly_dark")
+        st.plotly_chart(fig)
     case "Entropy":
         Q = st.slider("Heat Energy (J)", 1.0, 1000.0, 100.0)
         T_initial = st.slider("Initial Temperature (K)", 1.0, 1000.0, 300.0)
