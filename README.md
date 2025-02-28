@@ -29,5 +29,8 @@ No installation? No problem! Access the project online at:
 ## 🤝 
 We welcome contributions! To contribute:
 1.  the repository. 2. Create a  (`feature-branch`). 3.  your changes.
-## 📝 
+
+## Access the Solar system at 
+
+[Solar system](https://github.com/arungeethanbk/pygame_sim)
 This project is licensed under the MIT License. 
