@@ -33,4 +33,8 @@ We welcome contributions! To contribute:
 ## Access the Solar system at 
 
 [Solar system](https://github.com/arungeethanbk/pygame_sim)
+
+
+## 
+
 This project is licensed under the MIT License. 
